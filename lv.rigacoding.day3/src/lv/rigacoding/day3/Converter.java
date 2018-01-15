@@ -17,15 +17,19 @@ public class Converter {
         System.out.print("Ievadi grādus: ");
         int siltums = input.nextInt();
         
-        System.out.print("F vai C: ");
+        System.out.print("F, C vai K: ");
         char mervieniba = input.next().charAt(0);
         
-        if (mervieniba == 'F' || mervieniba  == 'f'){
+        if (mervieniba == 'C' || mervieniba  == 'c'){
             toFahrenheit(siltums);
         }
         
-        else if (mervieniba == 'C' || mervieniba == 'c'){
+        else if (mervieniba == 'F' || mervieniba == 'f'){
             toCelsius(siltums);
+        }
+        
+        else if (mervieniba == 'K' || mervieniba == 'k'){
+            toKelvim(siltums);
         }
         
         else {
@@ -36,13 +40,24 @@ public class Converter {
     }
     
     private void toFahrenheit(int siltums){
-       double fagrenheits = siltums * 9/5 + 32;
-        System.out.println(fagrenheits + " Farenheiti");
+       double fahrenheit = Math.round(siltums * 9/5 + 32);
+       double kelvin = Math.round(siltums + 273.15);
+        System.out.println(siltums + " C ir " + fahrenheit + " F vai "
+        + kelvin + " K.");
     }
         
     private void toCelsius(int siltums){
-        double Celsius = (siltums - 32) * 5/9;
-          System.out.println(Celsius + " Celsiji");
+        double celsius = Math.round((siltums - 32) * 5/9);
+        double kelvin = Math.round((siltums + 459.67) * 5/9);
+          System.out.println(siltums + " F ir " + celsius + " C vai "
+          + kelvin + " K." );
+    }
+    
+     private void toKelvim(int siltums){
+       double fahrenheit = Math.round(siltums * 9/5 - 459.67);
+       double celsius = Math.round(siltums - 273.15);
+        System.out.println(siltums + " K ir " + fahrenheit + " F vai "
+        + celsius + " C.");
     }
     
 }
