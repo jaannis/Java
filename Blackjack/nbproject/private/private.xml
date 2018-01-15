@@ -2,15 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Janis/Documents/NetBeansProjects/Java/Blackjack/src/data/Participant.java</file>
-            <file>file:/C:/Users/Janis/Documents/NetBeansProjects/Java/Blackjack/src/data/Money.java</file>
-            <file>file:/C:/Users/Janis/Documents/NetBeansProjects/Java/Blackjack/src/data/Hand.java</file>
-            <file>file:/C:/Users/Janis/Documents/NetBeansProjects/Java/Blackjack/src/data/Player.java</file>
-            <file>file:/C:/Users/Janis/Documents/NetBeansProjects/Java/Blackjack/src/data/Card.java</file>
-            <file>file:/C:/Users/Janis/Documents/NetBeansProjects/Java/Blackjack/src/data/Dealer.java</file>
-            <file>file:/C:/Users/Janis/Documents/NetBeansProjects/Java/Blackjack/src/data/Game.java</file>
-            <file>file:/C:/Users/Janis/Documents/NetBeansProjects/Java/Blackjack/src/data/Deck.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
