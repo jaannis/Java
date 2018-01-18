@@ -86,7 +86,7 @@ public class Loops {
         int total = 0;
         double videjais = 0;
 
-        for (int i = 1; i <= n; i++) {
+        for (int i = ; i <= n; i++) {
             System.out.println("Ievadi " + i + " skaitlis.");
             int skaitlis = input.nextInt();
             total = total + skaitlis;

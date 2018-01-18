@@ -20,15 +20,18 @@ public class Converter {
         System.out.print("F, C vai K: ");
         char mervieniba = input.next().charAt(0);
         
-        if (mervieniba == 'C' || mervieniba  == 'c'){
+        //parametru pārvērš uz mazajiem burtiem
+        mervieniba = Character.toLowerCase(mervieniba);
+        
+        if (mervieniba  == 'c'){
             toFahrenheit(siltums);
         }
         
-        else if (mervieniba == 'F' || mervieniba == 'f'){
+        else if (mervieniba == 'f'){
             toCelsius(siltums);
         }
         
-        else if (mervieniba == 'K' || mervieniba == 'k'){
+        else if (mervieniba == 'k'){
             toKelvim(siltums);
         }
         
