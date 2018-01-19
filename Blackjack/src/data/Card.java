@@ -10,24 +10,41 @@ package data;
  * @author Janis
  */
 public class Card {
-    
+
     //2..3..4..J..Q..K..A
     private String value;
-    
+
     //H, S, D, C
     private char suit;
-    
-    public Card(String value, char suit){
+
+    public Card(String value, char suit) {
         this.suit = suit;
         this.value = value;
     }
-    
-    public int getValue(){
-        
+
+    public int getValue() {
+        switch (value) {
+
+            case "A":
+                return 11;
+
+            case "K":
+            case "Q":
+            case "J":
+                return 10;
+
+            default:
+                return Integer.valueOf(value);
+        }
+    }
+
+    public String getFullName() {
+        //piemēram, H10
+        return suit + value; 
+
     }
     
-    public String getFullName(){
-        
-        
+    public String getValueString(){
+        return value;
     }
 }
