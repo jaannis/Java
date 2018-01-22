@@ -3,20 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lv.rigacoding.majasdarbs;
+package lv.rigacoding.day8;
 
 /**
  *
  * @author Janis
  */
-public class LvRigacodingMajasdarbs {
+public class LvRigacodingDay8 {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        
-        shopList  abc = new shopList();
+    public static void main3(String[] args) {
         // TODO code application logic here
     }
     
