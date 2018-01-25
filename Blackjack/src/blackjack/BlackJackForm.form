@@ -121,16 +121,25 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Sp&#x113;l&#x113;t v&#x113;lreiz"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="playAgainButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="dealCardButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="V&#x113;l k&#x101;rti"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dealCardButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="stopButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Pietiek"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stopButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="playerPointsLabel">
           <Properties>

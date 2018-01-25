@@ -13,8 +13,8 @@ import java.util.Scanner;
  */
 public class Game {
 
-    private Dealer dealer;
-    private Player player;
+    public Dealer dealer;
+    public Player player;
     private Deck deck;
     private static Scanner input = new Scanner(System.in);
 
@@ -36,6 +36,28 @@ public class Game {
         } else {
             return false;
         }
+
+    }
+
+    public void startNewGameUI() {
+        deck = new Deck();
+        deck.shuffle();
+
+        player.removeCards();
+        dealer.removeCards();
+
+        giveCard(player, false);
+        giveCard(player, false);
+        giveCard(dealer, true);
+        giveCard(dealer, false);
+
+    }
+
+    public void giveCard(Player player, boolean isBlind) {
+        Card card = deck.takeCard();
+        card.isBlind = isBlind;
+
+        player.giveCard(card);
     }
 
     public boolean startNewGame() {
@@ -49,28 +71,41 @@ public class Game {
             player.removeCards();
             dealer.removeCards();
 
-            player.giveCard(deck.takeCard());
-            player.giveCard(deck.takeCard());
+            //player.giveCard(deck.takeCard());
+            //player.giveCard(deck.takeCard());
+            giveCard(player, false);
+            giveCard(player, false);
 
-            dealer.giveCard(deck.takeCard());
-            dealer.giveCard(deck.takeCard());
+            //dealer.giveCard(deck.takeCard());
+            //dealer.giveCard(deck.takeCard());
+            giveCard(dealer, true);
+            giveCard(dealer, false);
 
             while (player.isInGame()) {
                 player.giveCard(deck.takeCard());
             }
 
-            while (dealer.isInGame()) {
-                dealer.giveCard(deck.takeCard());
-            }
+            dealerTurn();
 
-            getResults();
+            getResult();
 
         }
 
         return startNew;
     }
 
-    private void getResults() {
+    public void dealerTurn() {
+        while (dealer.isInGame()) {
+            dealer.giveCard(deck.takeCard());
+        }
+    }
+
+    private void getResult() {
+        System.out.println(getResultText());
+
+    }
+
+    public String getResultText() {
         int playerPoints = player.getTotalPoints();
         int dealerPoints = dealer.getTotalPoints();
 
@@ -78,17 +113,17 @@ public class Game {
         System.out.println("Dīlera punkti: " + dealerPoints);
 
         if (playerPoints > 21 && dealerPoints > 21) {
-            System.out.println("Nav uzvarētāja.");
+            return "Nav uzvarētāja.";
         } else if (playerPoints > 21) {
-            System.out.println("Dīleris uzvarēja.");
+            return "Dīleris uzvarēja";
         } else if (dealerPoints > 21) {
-            System.out.println("Spēlētājs uzvarēja. ");
+            return "Spēlētājs uzvarēja.";         
         } else if (playerPoints == dealerPoints) {
-            System.out.println("Nav uzvarētāja. ");
+            return "Nav uzvarētāja.";
         } else if (playerPoints > dealerPoints) {
-            System.out.println("Spēlētājs uzvarēja. ");
+            return "Spēlētājs uzvarēja.";
         } else {
-            System.out.println("Dīleris uzvarēja.");
+            return "Dīleris uzvarēja.";
         }
 
     }

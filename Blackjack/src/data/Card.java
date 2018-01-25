@@ -16,6 +16,8 @@ public class Card {
 
     //H, S, D, C
     private char suit;
+    
+    public boolean isBlind;
 
     public Card(String value, char suit) {
         this.suit = suit;

@@ -1,5 +1,10 @@
+package blackjack;
 
+
+import data.Card;
+import data.Game;
 import graphics.CardHolder;
+import graphics.CardImage;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -14,6 +19,7 @@ import graphics.CardHolder;
 public class BlackJackForm extends javax.swing.JFrame {
     private CardHolder playerCards;
     private CardHolder dealerCards;
+    private Game game;
 
     /**
      * Creates new form BlackJackForm
@@ -22,10 +28,51 @@ public class BlackJackForm extends javax.swing.JFrame {
         initComponents();
         
         playerCards = new CardHolder();
-        playerCards = new CardHolder();
+        dealerCards = new CardHolder();
         
         this.playerPanel.add(playerCards);
         this.dealerPanel.add(dealerCards);
+        
+        game = new Game();
+        startGame();
+    }
+    
+    private void startGame(){
+        game.startNewGameUI();
+        
+                        
+        refreshTable(false);
+        
+        informationLabel.setVisible(false);
+        playAgainButton.setVisible(false);
+        
+        dealerPointsLabel.setText("Dīlera punkti");
+        
+        stopButton.setVisible(true);
+        
+        dealCardButton.setVisible(true);
+    }
+    
+    private void refreshTable(boolean isFinish){
+        playerCards.clear();
+        dealerCards.clear();
+        
+        for(Card card : game.player.getCards()){
+            playerCards.addCard(new CardImage(card));
+        }
+        
+        for(Card card : game.dealer.getCards()){
+            if(isFinish){
+                card.isBlind = false;
+            }
+            dealerCards.addCard(new CardImage(card));
+        }
+        
+        playerPointsLabel.setText("Punkti: " + game.player.getTotalPoints());
+        
+        if(isFinish){
+            dealerPointsLabel.setText("Punkti: " + game.dealer.getTotalPoints());
+        }
     }
 
     /**
@@ -56,10 +103,25 @@ public class BlackJackForm extends javax.swing.JFrame {
         playerPanel.setForeground(new java.awt.Color(153, 153, 153));
 
         playAgainButton.setText("Spēlēt vēlreiz");
+        playAgainButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                playAgainButtonActionPerformed(evt);
+            }
+        });
 
         dealCardButton.setText("Vēl kārti");
+        dealCardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dealCardButtonActionPerformed(evt);
+            }
+        });
 
         stopButton.setText("Pietiek");
+        stopButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stopButtonActionPerformed(evt);
+            }
+        });
 
         playerPointsLabel.setText("Spēlētāja punkti");
 
@@ -128,6 +190,33 @@ public class BlackJackForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void dealCardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dealCardButtonActionPerformed
+        game.giveCard(game.player, false);
+        refreshTable(false);
+        
+        if(game.player.getTotalPoints() > 21){
+            dealCardButton.setVisible(false);
+            playAgainButton.setVisible(true);
+        }
+    }//GEN-LAST:event_dealCardButtonActionPerformed
+
+    private void stopButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopButtonActionPerformed
+        game.dealerTurn();
+        refreshTable(true);
+        
+        dealCardButton.setVisible(false);
+        stopButton.setVisible(false);
+        
+        informationLabel.setText(game.getResultText());
+        informationLabel.setVisible(true);
+        
+        playAgainButton.setVisible(true);
+    }//GEN-LAST:event_stopButtonActionPerformed
+
+    private void playAgainButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playAgainButtonActionPerformed
+        startGame();
+    }//GEN-LAST:event_playAgainButtonActionPerformed
 
     /**
      * @param args the command line arguments
